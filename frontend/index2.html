@@ -20,42 +20,37 @@
     <h3 id="title">Farm Anywhere Lah!</h1>
   </div>
   <br>
-  <table style="border: 1px solid transparent">
+  <div class="grid1">
+    <div><img src="./images/Brad1.png"></div>
+    <div><img class="" src="./images/icon_gold.png"></div>
+    <!-- Use document.getElementById("goldQty").innerText 
+      and document.getElementById("harvestQty").innerText 
+      to change Points values -->
+    <div id="goldQty">100</div> 
+    <div><img class="" src="./images/icon_harvest.png"></div>
+    <div id="harvestQty">100</div>
+    <div>Gold Points</div>
+    <div>Harvest Points</div>
     
-    <tbody>
-        <tr>
-        <td style="width: 33.3333%;">&nbsp;</td>
-        <td style="width: 33.3333%;"><img style="float: left;" src="./images/icon_gold.png" width="45" />
-          <p id="goldpoint">100</p></td>
-        <td style="width: 33.3333%;"><img style="float: left;" src="./images/icon_harvest.png"  width="45" />
-          <p id="harvestpoint">500</p></td>
-        </tr>
-        <tr>
-        <td style="width: 33.3333%;">&nbsp;</td>
-        <td style="width: 33.3333%;">Gold Points</td>
-        <td style="width: 33.3333%;">Harvest Points</td>
-        </tr>
-        </tbody>
-        </table>
-  <br>
+</div>
+
   <div class="set">
-    <button class="water feature">3</button>
-    <button class="fertilizer feature">17</button>
-    <button class="seed feature">2</button>
+    <button class="water feature button"><span class="badge">3</span></button>
+    <button class="fertilizer feature button"><span class="badge">17</span></button>
+    <button class="seed feature button"><span class="badge">2</span></button>
     <br/>
     <button class="buttonText" style="margin-right:68px;">water</button>
     <button class="buttonText" style="margin-right:64px;">fertilizer</button>
     <button class="buttonText">seeds</button>
     <br/>
-    <button class="insurance feature">0</button>
-    <button class="spin feature">3</button>
-    <button class="soil feature">2</button>
+    <button class="insurance feature button"><span id=insuranceQty class="badge">0</span></button>
+    <button class="spin feature button"><span class="badge">3</span></button>
+    <button class="soil feature button"><span class="badge">2</span></button>
     <br/>
     <button class="buttonText" style="margin-right:70px;">insurance</button>
     <button class="buttonText" style="margin-right:84px;">spin</button>
     <button class="buttonText" style="margin-right:18px;">soil</button>
   </div>
-
 
   <div>
     <button id="confirmation"></button>
