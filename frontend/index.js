@@ -1,39 +1,24 @@
-var gold = 100; //database
-var harvest = 100; //database
+//var gold = 100; //database
+//var harvest = 100; //database
 var insuranceTotal = 0; // count of item
-var insuranceCost = 50; // Premium minus away the coin - database
-var insurancePayout = 500; // SumAssured add to coin - database
+//var insuranceCost = 50; // Premium minus away the coin - database
+//var insurancePayout = 500; // SumAssured add to coin - database
 var hurricanceDamage = 100; // minus from harvest -database
 
-function getUserByUID() {
-  // var id = document.getElementById("goldQty").value = ${item.gold_points};
-  fetch(`http://localhost:3000/customers/by-uid?id=${1}`, { method: "GET" })
-    .then((response) => response.json())
-    .then((data) => {
-      // var text = `
-      //   <table>
-      //     <tr>
-      //       <th>ID</th>
-      //       <th>Full Name</th>
-      //       <th>Mobile</th>
-      //       <th>Email</th>
-      //     </tr>`;
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
 
-      data.forEach((item) => {
-        document.getElementById("goldQty").innerHTML = ${item.gold_points};
-        // text += `
-        //                 <tr>
-        //                   <td>${item.id}</td>
-        //                   <td>${item.first_name} ${item.last_name}</td>
-        //                   <td>${item.mobile}</td>
-        //                   <td>${item.email}</td>
-        //                 </tr>`;
-      });
-      // text += "</table>";
-      $(".mypanel").html(text);
-    })
-    .catch((error) => console.log("error", error));
-}
+// gold , harvest, insuranceCost, insurancePayout 
+fetch("http://localhost:3000/customers/by-uid?id=1", requestOptions)
+  .then(res => res.json())
+  .then(data => customer = data) 
+  .then(() => gold = (customer[0].gold_points))             // gold
+  .then(() => harvest = (customer[0].harvest_points))       // harvest
+  .then(() => insuranceCost = (customer[0].premium))        // insuranceCost
+  .then(() => insurancePayout = (customer[0].sum_assured))  // insurancePayout
+  .catch(error => console.log('error', error));
 
 let boardCastReset = function () {
   document.getElementById("boardcast").innerText = "";
@@ -52,10 +37,16 @@ document.querySelector(".insurance").addEventListener("click", () => {
   let insuranceIsClick = true;
   if (insuranceIsClick) {
     document.getElementById("story").addEventListener("click", () => {
-      alert("You have spent 50 coins to buy insurance");
-      gold -= insuranceCost;
-      insuranceTotal++;
-      document.querySelector(".insurance").textContent = `${insuranceTotal}`;
+
+      var confirmBuy = confirm("Spend 50 coins to buy 1 insurance?");
+      if (confirmBuy == true) {
+          gold -= insuranceCost;
+          insuranceTotal++
+          document.querySelector(".insurance").textContent = `${insuranceTotal}`;
+      } else 
+
+      return null;
+
     });
   }
 
@@ -70,12 +61,11 @@ document.querySelector(".spin").addEventListener("click", () => {
 var danger = function () {
   document.getElementById("story").src = "./images/hurricane.png";
   setTimeout(
-    alert("Oh no! Hurricane Came! You lost 'hurricaneDamage' harvest"),
+    alert("Oh no! \n Hurricane Came! \n \n You lost: \n\n • " + hurricanceDamage + " Harvest"),
     300
   );
-  harvest -= hurricanceDamage;
   document.getElementById("boardcast").innerText =
-    "Lucky You! You brought insurance. Check your payout!";
+    "💰💰 Lucky You! You brought insurance. 💰💰";
   document.getElementById("confirmation").style.backgroundColor = "green";
   document.getElementById("confirmation").style.color = "white";
   document.getElementById("confirmation").innerText = "Check PayOut!";
