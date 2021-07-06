@@ -5,11 +5,41 @@ var insuranceCost = 50; // Premium minus away the coin - database
 var insurancePayout = 500; // SumAssured add to coin - database
 var hurricanceDamage = 100; // minus from harvest -database
 
+function getUserByUID() {
+  // var id = document.getElementById("goldQty").value = ${item.gold_points};
+  fetch(`http://localhost:3000/customers/by-uid?id=${1}`, { method: "GET" })
+    .then((response) => response.json())
+    .then((data) => {
+      // var text = `
+      //   <table>
+      //     <tr>
+      //       <th>ID</th>
+      //       <th>Full Name</th>
+      //       <th>Mobile</th>
+      //       <th>Email</th>
+      //     </tr>`;
+
+      data.forEach((item) => {
+        document.getElementById("goldQty").innerHTML = ${item.gold_points};
+        // text += `
+        //                 <tr>
+        //                   <td>${item.id}</td>
+        //                   <td>${item.first_name} ${item.last_name}</td>
+        //                   <td>${item.mobile}</td>
+        //                   <td>${item.email}</td>
+        //                 </tr>`;
+      });
+      // text += "</table>";
+      $(".mypanel").html(text);
+    })
+    .catch((error) => console.log("error", error));
+}
+
 let boardCastReset = function () {
   document.getElementById("boardcast").innerText = "";
   document.getElementById("confirmation").style.backgroundColor = "transparent";
   document.getElementById("confirmation").innerText = "";
-}; 
+};
 
 document.querySelector(".water").addEventListener("click", () => {
   document.getElementById("story").src = "./images/water.png";

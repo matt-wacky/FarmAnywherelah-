@@ -1,8 +1,8 @@
 function getInsurance() {
-    fetch("http://localhost:3000/customers/all", {method: "GET"})
-        .then((response) => response.json())
-        .then((data) => {
-            var text = `
+  fetch("http://localhost:3000/customers/all", { method: "GET" })
+    .then((response) => response.json())
+    .then((data) => {
+      var text = `
               <table>
                 <tr>
                   <th>ID</th>
@@ -11,27 +11,27 @@ function getInsurance() {
                   <th>Email</th>
                 </tr>`;
 
-            data.forEach((item) => {
-                text += `
+      data.forEach((item) => {
+        text += `
                     <tr>
                       <td>${item.id}</td>
                       <td>${item.first_name} ${item.last_name}</td>
                       <td>${item.gold_points}</td>
                       <td>${item.email}</td>
                     </tr>`;
-            });
-            text += "</table>";
-            $(".mypanel").html(text);
-        })
-        .catch((error) => console.log("error", error));
+      });
+      text += "</table>";
+      $(".mypanel").html(text);
+    })
+    .catch((error) => console.log("error", error));
 }
 
 function getUserByUID() {
-    var id = document.getElementById("paramId").value;
-    fetch(`http://localhost:3000/user/by-uid?id=${id}`, {method: "GET"})
-        .then((response) => response.json())
-        .then((data) => {
-            var text = `
+  var id = document.getElementById("paramId").value;
+  fetch(`http://localhost:3000/customers/by-uid?id=${id}`, { method: "GET" })
+    .then((response) => response.json())
+    .then((data) => {
+      var text = `
               <table>
                 <tr>
                   <th>ID</th>
@@ -40,17 +40,17 @@ function getUserByUID() {
                   <th>Email</th>
                 </tr>`;
 
-            data.forEach((item) => {
-                text += `
+      data.forEach((item) => {
+        text += `
                     <tr>
                       <td>${item.id}</td>
                       <td>${item.first_name} ${item.last_name}</td>
                       <td>${item.mobile}</td>
                       <td>${item.email}</td>
                     </tr>`;
-            });
-            text += "</table>";
-            $(".mypanel").html(text);
-        })
-        .catch((error) => console.log("error", error));
+      });
+      text += "</table>";
+      $(".mypanel").html(text);
+    })
+    .catch((error) => console.log("error", error));
 }
