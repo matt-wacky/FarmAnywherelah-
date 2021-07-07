@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 </head>
 
-<body>
+<body onload="init()">
 <div class="container">
   <div class="nav">
     <h3 id="title">Farm Anywhere Lah!</h1>
@@ -26,9 +26,10 @@
     <!-- Use document.getElementById("goldQty").innerText 
       and document.getElementById("harvestQty").innerText 
       to change Points values -->
-    <div id="goldQty"></div> 
+    <div id="goldQty"><p id="gp" class="gp">+___</p></div> 
+    
     <div><img class="" src="./images/icon_harvest.png"></div>
-    <div id="harvestQty">100</div>
+    <div id="harvestQty"><p id="hp" class="hp">___</p></div>
     <div>Gold Points</div>
     <div>Harvest Points</div>
     
