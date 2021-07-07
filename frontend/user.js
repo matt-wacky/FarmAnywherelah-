@@ -7,7 +7,7 @@ function getInsurance() {
                 <tr>
                   <th>ID</th>
                   <th>Full Name</th>
-                  <th>Gold Points</th>
+                  <th>Mobile</th>
                   <th>Email</th>
                 </tr>`;
 
@@ -16,7 +16,7 @@ function getInsurance() {
                     <tr>
                       <td>${item.id}</td>
                       <td>${item.first_name} ${item.last_name}</td>
-                      <td>${item.gold_points}</td>
+                      <td>${item.mobile}</td>
                       <td>${item.email}</td>
                     </tr>`;
       });
@@ -25,6 +25,38 @@ function getInsurance() {
     })
     .catch((error) => console.log("error", error));
 }
+
+// function getUserByUID() {
+//   var id = document.getElementById("paramId").value;
+//   console.log("customer name: " + id);
+//   fetch(`http://localhost:3000/customers/by-name?first_name=${id}`, {
+//     method: "GET",
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       var text = `
+//                 <table>
+//                   <tr>
+//                     <th>ID</th>
+//                     <th>Full Name</th>
+//                     <th>Mobile</th>
+//                     <th>Email</th>
+//                   </tr>`;
+//       console.log("customer name inside: " + id);
+//       data.forEach((item) => {
+//         text += `
+//                       <tr>
+//                         <td>${item.id}</td>
+//                         <td>${item.first_name} ${item.last_name}</td>
+//                         <td>${item.mobile}</td>
+//                         <td>${item.email}</td>
+//                       </tr>`;
+//       });
+//       text += "</table>";
+//       $(".mypanel").html(text);
+//     })
+//     .catch((error) => console.log("error", error));
+// }
 
 function getUserByUID() {
   var id = document.getElementById("paramId").value;

@@ -1,46 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Read Data from Server</title>
-    <script src="user.js"></script>
-    <script src="account.js"></script>
-    <script src="transaction.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <style>
-        table,
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-    <!-- Sample pages updated by Team 2 -->
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <script src="user.js"></script>
+  <script src="account.js"></script>
+  <script src="transaction.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 </head>
 
-<body>
-<div>
-    <H1> READ USER DATA FROM BACKEND SERVER </H1>
-    <h2> Note: Start the backend server first </h2>
+<body onload="init()">
+<div class="container">
+  <div class="nav">
+    <h3 id="title">Farm Anywhere Lah!</h1>
+  </div>
+  <br>
+  <div class="grid1">
+    <div><img src="./images/Brad1.png"></div>
+    <div><img src="./images/icon_gold.png" width="30" height="30"></div>
+    <!-- Use document.getElementById("goldQty").innerText 
+      and document.getElementById("harvestQty").innerText 
+      to change Points values -->
+    <div id="gp" class="gp"></div> 
+    
+    <div><img class="" src="./images/icon_harvest.png"></div>
+    <div id="hp" class="hp"></div>
+    <div>Gold Points</div>
+    <div>Harvest Points</div>
+    
 </div>
 
-<button class="btn btn-info" onclick="getInsurance()">Search All Insurance</button>
-<button class="btn btn-info" onclick="getAccounts()">View All Accounts</button>
-<button class="btn btn-info" onclick="getTransactions()">View All Transactions</button>
-<br>
+  <div class="set">
+    <button class="water feature button"><span id ="waterQty" class="badge">3</span></button>
+    <button class="fertilizer feature button"><span id="fertilizerQty" class="badge">17</span></button>
+    <button class="seed feature button"><span id="seedQty" class="badge">2</span></button>
+    <br/>
+    <button class="buttonText" style="margin-right:68px;">water</button>
+    <button class="buttonText" style="margin-right:64px;">fertilizer</button>
+    <button class="buttonText">seeds</button>
+    <br/>
+    <button class="insurance feature button"><span id="insuranceQty" class="badge">0</span></button>
+    <button class="spin feature button"><span id="spinQty" class="badge">3</span></button>
+    <button class="soil feature button"><span id="soilQty" class="badge">2</span></button>
+    <br/>
+    <button class="buttonText" style="margin-right:70px;">insurance</button>
+    <button class="buttonText" style="margin-right:84px;">spin</button>
+    <button class="buttonText" style="margin-right:18px;">soil</button>
+  </div>
 
-<button class="btn btn-info" onclick="getUserByUID()">Search User</button>
-<button class="btn btn-info" onclick="getAccountByAID()">Search Account</button>
-<button class="btn btn-info" onclick="getTransactionByTID()">Search All Transaction</button>
+  <div>
+    <button id="confirmation"></button>
+    <br/>
+    <button id="boardcast"></button>
+  </div>
 
 
-<br>
-Enter ID: <input type="text" id="paramId"/>
-<div class="mypanel"></div>
+  <div>
+    <img id="story" src="./images/main.png" alt="story" width="450" height="300">
+  </div>
 
+  <div class="mypanel"></div>
+
+  <div>
+    <p style="text-align: left; margin-left: 5px; font-style: oblique;">Players:</p>
+    <div style="overflow-y: hidden;">
+      <div style="text-align: left; overflow-y: hidden; width: 600px;">
+        <button class="buttonText">Ah Teck</button>
+        <button class="buttonText">Dolly</button>
+        <button class="buttonText">Ronnie</button>
+        <button class="buttonText">Paul</button>
+        <button class="buttonText">Denise</button>
+        <button class="buttonText">Rosie</button>
+        <button class="buttonText">Ahmad</button>
+        
+      </div>
+    </div>
+
+  </div>
+  <br/>
+
+  <div>
+    <input class="chat" placeholder="hi guys, i need water..">
+  </div>
+  <br/>
+
+  <button class="btn btn-info" onclick="getUserByUID()">Contact Details</button>
+
+  Enter ID: <input type="text" id="paramId"/>
+  <br/>
+  <br/>
+  
+  <!-- <button class="btn btn-info" onclick="getInsurance()">Friends' High Scores</button> -->
+
+  <br/>
+  <br/>
+  Made by Grp 2
+  <br/>
+  <br/>
+  End of Demo
+  <br/>
+  - - - - - - - - - - - - - - - - -
+
+</div>
+
+
+<script src="index.js" charset="utf-8"></script>
+
+<footer>
+
+  <br/>
+  <br/>
+  <div style="background-color: rgb(143, 230, 164); color: brown;">
+    // Developer Zone //
+  <br/>
+  <button class="danger" onclick="danger()">Danger!</button>
+  <br/>
+  For Developer only!
+  <br/>
+  <br/>
+
+  </div>
+  
+</footer>
 </body>
+</html>
