@@ -23,22 +23,22 @@ router.get("/customers/all", (request, response) => {
 });
 
 
-router.get("/customers/by-id", (req, res) => {
-  let id = req.query.id; 
-  let x = `
-    select * from customers 
-    where id = ${id}
-    `;
-    //console.log("query: "+x);   
-  database.connection.query(x, (error, results) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send("Server Error:\n" + error);
-    } else {
-      res.status(200).send(results);
-    }
-  });
-});
+// router.get("/customers/by-id", (req, res) => {
+//   let id = req.query.id; 
+//   let x = `
+//     select * from customers 
+//     where id = ${id}
+//     `;
+//     //console.log("query: "+x);   
+//   database.connection.query(x, (error, results) => {
+//     if (error) {
+//       console.error(error);
+//       res.status(500).send("Server Error:\n" + error);
+//     } else {
+//       res.status(200).send(results);
+//     }
+//   });
+// });
 
 router.get("/customers/by-name", (req, res) => {
   let name = req.query.first_name; 
@@ -105,27 +105,27 @@ router.delete("/customers/delete/by-id", (req, res) => {
   });
 });
 
-// router.get("/customers/by-uid", (request, response) => {
-//   if (request.query.id.length === 0 || isNaN(request.query.id)) {
-//     console.log(`Invalid ID received. ID: ${request.query.id}`);
-//     response.status(400).send("Invalid ID received.");
-//     return;
-//   }
-//   console.log("customer: " + request.query.id);
-//   database.connection.query(
-//     `select *
-//          from customers
-//          where id = ${request.query.id}`,
-//     (errors, results) => {
-//       if (errors) {
-//         console.log(errors);
-//         response.status(500).send("Internal Serve Error");
-//       } else {
-//         response.status(200).send(results);
-//       }
-//     }
-//   );
-// });
+router.get("/customers/by-uid", (request, response) => {
+  if (request.query.id.length === 0 || isNaN(request.query.id)) {
+    console.log(`Invalid ID received. ID: ${request.query.id}`);
+    response.status(400).send("Invalid ID received.");
+    return;
+  }
+  console.log("customer: " + request.query.id);
+  database.connection.query(
+    `select *
+         from customers
+         where id = ${request.query.id}`,
+    (errors, results) => {
+      if (errors) {
+        console.log(errors);
+        response.status(500).send("Internal Serve Error");
+      } else {
+        response.status(200).send(results);
+      }
+    }
+  );
+});
 
 // router.get("/customers/by-name", (request, response) => {
 //   // if (request.query.id.length === 0) {
